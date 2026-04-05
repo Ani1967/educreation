@@ -33,68 +33,58 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const navItems = NAV_ITEMS[role] || [];
 
   return (
-    <div style={{
-      display: "flex",
-      minHeight: "100vh",
-      background: "#0a0a0a",
-      fontFamily: "'Inter', -apple-system, sans-serif",
-    }}>
-      {/* Sidebar */}
+    <div style={{ display: "flex", minHeight: "100vh", background: "#0a0a0a", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+
+      {/* ── Sidebar ── */}
       <aside style={{
-        width: "220px",
-        minWidth: "220px",
+        width: "200px",
+        flexShrink: 0,
         background: "#111",
-        borderRight: "1px solid #1e1e1e",
+        borderRight: "1px solid #222",
         display: "flex",
         flexDirection: "column",
-        flexShrink: 0,
-        position: "sticky",
-        top: 0,
-        height: "100vh",
-        overflowY: "auto",
       }}>
-        {/* Logo */}
+
+        {/* Logo block */}
         <div style={{
-          padding: "1.5rem",
-          borderBottom: "1px solid #1e1e1e",
-          flexShrink: 0,
+          padding: "20px 20px 16px",
+          borderBottom: "1px solid #222",
         }}>
-          <Link href="/" style={{ textDecoration: "none", display: "block" }}>
-            <div style={{
-              fontSize: "1.2rem",
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <span style={{
+              display: "block",
+              fontSize: "18px",
               fontWeight: 800,
               background: "linear-gradient(135deg, #d4a843, #f0c060)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              lineHeight: 1.2,
             }}>
               EduCreation
-            </div>
+            </span>
           </Link>
-          <div style={{
-            marginTop: "0.35rem",
-            fontSize: "0.72rem",
+          <span style={{
+            display: "block",
+            marginTop: "4px",
+            fontSize: "11px",
             color: "#555",
             textTransform: "capitalize",
-            letterSpacing: "0.03em",
           }}>
             {role} portal
-          </div>
+          </span>
         </div>
 
-        {/* Nav */}
-        <nav style={{ flex: 1, padding: "0.75rem 0" }}>
+        {/* Nav links */}
+        <nav style={{ flex: 1, paddingTop: "8px", paddingBottom: "8px" }}>
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               style={{
                 display: "block",
-                padding: "0.55rem 1.5rem",
-                color: "#888",
+                padding: "9px 20px",
+                fontSize: "14px",
+                color: "#999",
                 textDecoration: "none",
-                fontSize: "0.875rem",
-                lineHeight: 1.4,
               }}
             >
               {item.label}
@@ -102,20 +92,18 @@ export default async function DashboardLayout({ children }: { children: React.Re
           ))}
         </nav>
 
-        {/* User + Sign out */}
+        {/* User + sign out */}
         <div style={{
-          padding: "1rem 1.5rem",
-          borderTop: "1px solid #1e1e1e",
-          flexShrink: 0,
+          padding: "14px 20px",
+          borderTop: "1px solid #222",
         }}>
           <div style={{
+            fontSize: "13px",
             color: "#555",
-            fontSize: "0.78rem",
-            marginBottom: "0.6rem",
+            marginBottom: "10px",
+            whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            lineHeight: 1.3,
           }}>
             {session.user.name}
           </div>
@@ -123,27 +111,33 @@ export default async function DashboardLayout({ children }: { children: React.Re
             "use server";
             await signOut({ redirectTo: "/" });
           }}>
-            <button type="submit" style={{
-              background: "none",
-              border: "1px solid #2a2a2a",
-              borderRadius: "6px",
-              color: "#555",
-              padding: "0.4rem 0.75rem",
-              fontSize: "0.78rem",
-              cursor: "pointer",
-              width: "100%",
-              textAlign: "center",
-            }}>
+            <button
+              type="submit"
+              style={{
+                display: "block",
+                width: "100%",
+                padding: "6px 0",
+                background: "transparent",
+                border: "1px solid #333",
+                borderRadius: "6px",
+                color: "#666",
+                fontSize: "13px",
+                cursor: "pointer",
+                textAlign: "center",
+              }}
+            >
               Sign out
             </button>
           </form>
         </div>
+
       </aside>
 
-      {/* Main content */}
-      <main style={{ flex: 1, overflow: "auto", minWidth: 0 }}>
+      {/* ── Main ── */}
+      <main style={{ flex: 1, minWidth: 0, overflow: "auto" }}>
         {children}
       </main>
+
     </div>
   );
 }
