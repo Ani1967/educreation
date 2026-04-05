@@ -5,6 +5,13 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+const ROLE_HOME: Record<string, string> = {
+  student: "/dashboard/student",
+  parent:  "/dashboard/parent",
+  mentor:  "/dashboard/mentor",
+  admin:   "/dashboard/admin",
+};
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -28,7 +35,8 @@ export default function LoginPage() {
     if (res?.error) {
       setError("Invalid email or password.");
     } else {
-      router.push("/dashboard");
+      // Use full page navigation to ensure session cookie is sent on the next request
+      window.location.href = "/dashboard";
     }
   }
 
