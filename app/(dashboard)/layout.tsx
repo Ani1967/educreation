@@ -7,21 +7,25 @@ const NAV_ITEMS: Record<string, { label: string; href: string }[]> = {
   student: [
     { label: "Overview",    href: "/dashboard/student" },
     { label: "My Sessions", href: "/dashboard/student/sessions" },
+    { label: "Settings",    href: "/dashboard/settings" },
   ],
   parent: [
     { label: "Overview",     href: "/dashboard/parent" },
     { label: "Reports",      href: "/dashboard/parent/reports" },
     { label: "Subscription", href: "/dashboard/parent/subscription" },
+    { label: "Settings",     href: "/dashboard/settings" },
   ],
   mentor: [
     { label: "Overview",    href: "/dashboard/mentor" },
     { label: "My Students", href: "/dashboard/mentor/students" },
     { label: "Sessions",    href: "/dashboard/mentor/sessions" },
+    { label: "Settings",    href: "/dashboard/settings" },
   ],
   admin: [
     { label: "Overview", href: "/dashboard/admin" },
     { label: "Bookings", href: "/dashboard/admin/bookings" },
     { label: "Users",    href: "/dashboard/admin/users" },
+    { label: "Settings", href: "/dashboard/settings" },
   ],
 };
 
