@@ -3,31 +3,28 @@
 > Personalized, concept-focused education for students in Classes 6–12.
 > "Understand more. Stress less. Create always."
 
-**Live**: https://educreators.org
+**Live**: https://educreators.org | https://educreation.vercel.app
 
 ---
 
 ## Stack
 
-- **Current**: Static HTML/CSS/JS
-- **Planned**: Next.js + PostgreSQL (Supabase/Neon)
-
-## Local Dev
-
-```bash
-npx serve -l 56779
-# → http://localhost:56779
-```
+- **Current**: Next.js 15 (App Router) + Neon PostgreSQL + Drizzle ORM
+- **Local dev**: `npm run dev` → http://localhost:56779
 
 ## Deploy
 
-Hosted on Vercel. Pushes to `main` auto-deploy.
+Hosted on Vercel. Every push to `main` auto-deploys.
 
-## Roadmap
+## Phases
 
-- [ ] Migrate to Next.js
-- [ ] Student dashboard (auth)
-- [ ] Session booking system
-- [ ] PostgreSQL — student records, session logs
-- [ ] Parent dashboard with weekly reports
-- [ ] Payment integration (Razorpay)
+- [x] Phase 0 — Next.js + Neon DB connected
+- [ ] Phase 1 — Full DB schema (users, students, sessions, progress)
+- [ ] Phase 2 — Landing page component breakdown
+- [ ] Phase 3 — Auth (NextAuth, 4 roles)
+- [ ] Phase 4 — Admin booking dashboard
+- [ ] Phase 5 — Student dashboard
+- [ ] Phase 6 — Parent dashboard + weekly reports
+- [ ] Phase 7 — Mentor portal
+- [ ] Phase 8 — Razorpay payments
+- [ ] Phase 9 — Automated email reports
