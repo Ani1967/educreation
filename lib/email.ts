@@ -1,6 +1,9 @@
 import { Resend } from "resend";
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy — instantiated at call time so build doesn't fail without RESEND_API_KEY
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY || "re_placeholder");
+}
 
 export interface WeeklyReportEmailData {
   parentName: string;
@@ -149,7 +152,7 @@ export async function sendWeeklyReportEmail(
 ): Promise<{ id?: string; error?: string }> {
   const html = buildWeeklyReportHtml(data);
 
-  const { data: result, error } = await resend.emails.send({
+  const { data: result, error } = await getResend().emails.send({
     from: process.env.REPORT_FROM_EMAIL || "reports@educreators.org",
     to,
     subject: `${data.studentName}'s Weekly Learning Report — ${data.weekLabel}`,
