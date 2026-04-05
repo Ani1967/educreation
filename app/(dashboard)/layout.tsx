@@ -10,8 +10,9 @@ const NAV_ITEMS: Record<string, { label: string; href: string }[]> = {
     { label: "Progress", href: "/dashboard/student/progress" },
   ],
   parent: [
-    { label: "Overview", href: "/dashboard/parent" },
-    { label: "Reports", href: "/dashboard/parent/reports" },
+    { label: "Overview",      href: "/dashboard/parent" },
+    { label: "Reports",       href: "/dashboard/parent/reports" },
+    { label: "Subscription",  href: "/dashboard/parent/subscription" },
   ],
   mentor: [
     { label: "Overview", href: "/dashboard/mentor" },
