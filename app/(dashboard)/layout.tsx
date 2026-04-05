@@ -33,99 +33,32 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const navItems = NAV_ITEMS[role] || [];
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "#0a0a0a", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div className="dash-shell">
 
-      {/* ── Sidebar ── */}
-      <aside style={{
-        width: "200px",
-        flexShrink: 0,
-        background: "#111",
-        borderRight: "1px solid #222",
-        display: "flex",
-        flexDirection: "column",
-      }}>
+      <aside className="dash-sidebar">
 
-        {/* Logo block */}
-        <div style={{
-          padding: "20px 20px 16px",
-          borderBottom: "1px solid #222",
-        }}>
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <span style={{
-              display: "block",
-              fontSize: "18px",
-              fontWeight: 800,
-              background: "linear-gradient(135deg, #d4a843, #f0c060)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              EduCreation
-            </span>
+        <div className="dash-logo-block">
+          <Link href="/" className="dash-logo-text">
+            EduCreation
           </Link>
-          <span style={{
-            display: "block",
-            marginTop: "4px",
-            fontSize: "11px",
-            color: "#555",
-            textTransform: "capitalize",
-          }}>
-            {role} portal
-          </span>
+          <span className="dash-role-text">{role} portal</span>
         </div>
 
-        {/* Nav links */}
-        <nav style={{ flex: 1, paddingTop: "8px", paddingBottom: "8px" }}>
+        <nav className="dash-nav">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                display: "block",
-                padding: "9px 20px",
-                fontSize: "14px",
-                color: "#999",
-                textDecoration: "none",
-              }}
-            >
+            <Link key={item.href} href={item.href} className="dash-nav-link">
               {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* User + sign out */}
-        <div style={{
-          padding: "14px 20px",
-          borderTop: "1px solid #222",
-        }}>
-          <div style={{
-            fontSize: "13px",
-            color: "#555",
-            marginBottom: "10px",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}>
-            {session.user.name}
-          </div>
+        <div className="dash-user-block">
+          <div className="dash-user-name">{session.user.name}</div>
           <form action={async () => {
             "use server";
             await signOut({ redirectTo: "/" });
           }}>
-            <button
-              type="submit"
-              style={{
-                display: "block",
-                width: "100%",
-                padding: "6px 0",
-                background: "transparent",
-                border: "1px solid #333",
-                borderRadius: "6px",
-                color: "#666",
-                fontSize: "13px",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
+            <button type="submit" className="dash-signout-btn">
               Sign out
             </button>
           </form>
@@ -133,8 +66,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       </aside>
 
-      {/* ── Main ── */}
-      <main style={{ flex: 1, minWidth: 0, overflow: "auto" }}>
+      <main className="dash-main">
         {children}
       </main>
 
