@@ -40,15 +40,16 @@ export const difficultyEnum = pgEnum("difficulty", [
 // Phase 3 will add NextAuth sessions/accounts tables on top of this.
 
 export const users = pgTable("users", {
-  id:        serial("id").primaryKey(),
-  email:     text("email").notNull().unique(),
-  name:      text("name").notNull(),
-  phone:     text("phone"),
-  role:      userRoleEnum("role").notNull().default("student"),
-  avatarUrl: text("avatar_url"),
-  isActive:  boolean("is_active").notNull().default(true),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  id:           serial("id").primaryKey(),
+  email:        text("email").notNull().unique(),
+  name:         text("name").notNull(),
+  passwordHash: text("password_hash"),               // null for OAuth users
+  phone:        text("phone"),
+  role:         userRoleEnum("role").notNull().default("student"),
+  avatarUrl:    text("avatar_url"),
+  isActive:     boolean("is_active").notNull().default(true),
+  createdAt:    timestamp("created_at").defaultNow().notNull(),
+  updatedAt:    timestamp("updated_at").defaultNow().notNull(),
 });
 
 // ── Students ──────────────────────────────────────────────────────────────────
