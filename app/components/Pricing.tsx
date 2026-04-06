@@ -32,7 +32,7 @@ export default function Pricing() {
               <p className="plan-feature dim">Exam readiness tracker</p>
               <p className="plan-feature dim">Weekly parent report</p>
               <p className="plan-feature dim">Live doubt sessions</p>
-              <a href={WA_URL} target="_blank" rel="noreferrer" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
+              <a href="/signup" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
             </div>
           </div>
 
@@ -57,7 +57,7 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>Weekly parent concept report</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>2 live doubt sessions per month</p>
               <p className="plan-feature dim">1-on-1 mentor sessions</p>
-              <a href={WA_URL} target="_blank" rel="noreferrer" className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>Get started — most popular</a>
+              <a href="/signup" className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>Get started — most popular</a>
             </div>
           </div>
 
@@ -81,7 +81,7 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Board exam booster programme</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Priority weekly parent call</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Emergency concept rescue session</p>
-              <a href={WA_URL} target="_blank" rel="noreferrer" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
+              <a href="/signup" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
             </div>
           </div>
 

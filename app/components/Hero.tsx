@@ -1,5 +1,3 @@
-import { WA_URL } from "@/lib/constants";
-
 export default function Hero() {
   return (
     <section className="hero" id="home">
@@ -16,7 +14,7 @@ export default function Hero() {
               EduCreation is a revolutionary learning system where students don&apos;t just prepare for exams — they own how they learn. Stress-free. Conceptual. Built for every child.
             </p>
             <div className="hero-actions">
-              <a href={WA_URL} target="_blank" rel="noreferrer" className="btn-primary">
+              <a href="/signup" className="btn-primary">
                 Book your free session
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

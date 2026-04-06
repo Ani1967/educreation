@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { WA_URL } from "@/lib/constants";
-
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -38,7 +36,7 @@ export default function Nav() {
               <li><a href="#students">Students</a></li>
               <li><a href="#pricing">Pricing</a></li>
               <li><a href="#parents">For Parents</a></li>
-              <li><a href={WA_URL} target="_blank" rel="noreferrer" className="nav-cta">Book free session</a></li>
+              <li><a href="/signup" className="nav-cta">Book free session</a></li>
             </ul>
             <button className="nav-hamburger" onClick={() => setMobileOpen(true)} aria-label="Menu">
               <span /><span /><span />
@@ -52,7 +50,7 @@ export default function Nav() {
         <a href="#students" onClick={() => setMobileOpen(false)}>Students</a>
         <a href="#pricing"  onClick={() => setMobileOpen(false)}>Pricing</a>
         <a href="#parents"  onClick={() => setMobileOpen(false)}>For Parents</a>
-        <a href={WA_URL} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)} style={{ color: "var(--gold)" }}>
+        <a href="/signup" onClick={() => setMobileOpen(false)} style={{ color: "var(--gold)" }}>
           Book free session →
         </a>
       </div>
