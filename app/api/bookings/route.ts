@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { bookings } from "@/lib/db/schema";
+import { sendBookingConfirmationEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,6 +41,18 @@ export async function POST(req: NextRequest) {
         source: "website",
       })
       .returning();
+
+    // Send confirmation email if email was provided
+    if (email) {
+      sendBookingConfirmationEmail(email, {
+        parentName: parent_name,
+        studentName: student_name,
+        studentClass,
+        board,
+        subject: subject || undefined,
+        preferredTime: preferred_time || undefined,
+      }).catch((e) => console.error("Booking email failed:", e));
+    }
 
     return NextResponse.json({ success: true, id: booking.id });
   } catch (err) {

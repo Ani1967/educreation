@@ -146,6 +146,59 @@ export function buildWeeklyReportHtml(data: WeeklyReportEmailData): string {
 </html>`;
 }
 
+export async function sendBookingConfirmationEmail(
+  to: string,
+  data: { parentName: string; studentName: string; studentClass: string; board: string; subject?: string; preferredTime?: string }
+): Promise<{ id?: string; error?: string }> {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Booking Confirmed</title></head>
+<body style="margin:0;padding:0;background:#0a0a0a;font-family:'Helvetica Neue',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1a1500,#0a0a0a);border:1px solid #2a2a1a;border-radius:16px 16px 0 0;padding:32px 40px;">
+            <div style="font-size:22px;font-weight:800;color:#d4a843;letter-spacing:-0.5px;">EduCreation</div>
+            <div style="font-size:13px;color:#666;margin-top:4px;">Free Session Booking</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#111;border-left:1px solid #1e1e1e;border-right:1px solid #1e1e1e;padding:32px 40px;">
+            <p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#fff;">Hi ${data.parentName},</p>
+            <p style="margin:0 0 16px;font-size:14px;color:#888;line-height:1.7;">We've received your booking for <strong style="color:#d4a843;">${data.studentName}</strong> (${data.studentClass} · ${data.board}).</p>
+            ${data.subject ? `<p style="margin:0 0 8px;font-size:14px;color:#888;">Subject focus: <strong style="color:#aaa;">${data.subject}</strong></p>` : ""}
+            ${data.preferredTime ? `<p style="margin:0 0 16px;font-size:14px;color:#888;">Preferred time: <strong style="color:#aaa;">${data.preferredTime}</strong></p>` : ""}
+            <div style="background:#161616;border-left:3px solid #d4a843;border-radius:0 10px 10px 0;padding:16px 20px;margin-top:20px;">
+              <p style="margin:0;font-size:14px;color:#ccc;line-height:1.7;">Our team will WhatsApp you at the number you provided within <strong style="color:#d4a843;">2 hours</strong> to confirm your session time.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#0d0d0d;border:1px solid #1a1a1a;border-radius:0 0 16px 16px;padding:24px 40px;text-align:center;">
+            <p style="margin:0;font-size:12px;color:#444;line-height:1.6;">
+              EduCreation · Personalised Learning for CBSE &amp; ICSE Students<br/>
+              Questions? WhatsApp us at +91 90524 16158
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
+  const { data: result, error } = await getResend().emails.send({
+    from: process.env.REPORT_FROM_EMAIL || "reports@educreators.org",
+    to,
+    subject: `Your free session for ${data.studentName} is booked — EduCreation`,
+    html,
+  });
+
+  if (error) return { error: error.message };
+  return { id: result?.id };
+}
+
 export async function sendWeeklyReportEmail(
   to: string,
   data: WeeklyReportEmailData
