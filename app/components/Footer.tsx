@@ -1,4 +1,4 @@
-import { WA_URL, CONTACT_EMAIL } from "@/lib/constants";
+import { WA_URL } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -8,8 +8,8 @@ export default function Footer() {
           <div>
             <p className="footer-brand">EduCreation</p>
             <p className="footer-desc">A learning system built for every student in India. Not just knowledge — understanding that stays for life. Conceptual. Stress-free. Personalised.</p>
-            <p style={{ marginTop: "1rem", fontSize: "0.82rem", color: "rgba(201,169,110,0.5)" }}>
-              <a href="/contact" style={{ color: "inherit" }}>{CONTACT_EMAIL}</a><br />
+            <p style={{ marginTop: "1rem", fontSize: "0.82rem", color: "rgba(240,230,206,0.5)" }}>
+              <a href="/contact" style={{ color: "inherit" }}>anirudhakar [at] gmail.com</a><br />
               Kolkata, West Bengal, India
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <p className="footer-col-title">Contact</p>
             <ul className="footer-links">
-              <li><a href="/contact">{CONTACT_EMAIL}</a></li>
+              <li><a href="/contact">Send us an email</a></li>
               <li><a href={WA_URL} target="_blank" rel="noreferrer">WhatsApp us</a></li>
               <li><a href="/contact">Send a message</a></li>
               <li><a href="/contact">School pilot enquiry</a></li>

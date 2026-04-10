@@ -1,43 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-
-const ROLE_HOME: Record<string, string> = {
-  student: "/dashboard/student",
-  parent:  "/dashboard/parent",
-  mentor:  "/dashboard/mentor",
-  admin:   "/dashboard/admin",
-};
+import { loginAction } from "@/app/actions/auth";
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error, setError]       = useState("");
+  const [loading, setLoading]   = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    const result = await loginAction(email, password);
 
-    setLoading(false);
-
-    if (res?.error) {
-      setError("Invalid email or password.");
-    } else {
-      // Use full page navigation to ensure session cookie is sent on the next request
-      window.location.href = "/dashboard";
+    // If result is returned (no redirect thrown), it contains an error
+    if (result?.error) {
+      setError(result.error);
+      setLoading(false);
     }
+    // If loginAction threw a redirect, Next.js handles navigation automatically
   }
 
   return (
