@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  verification: {
+    google: "O44pzGtYeq-OLUIbMgUUUe7W-14msQl1oKnGGAvdgII",
+  },
   title: "EduCreation — Understand More. Stress Less. Create Always.",
   description:
     "EduCreation is a revolutionary learning system for students in India. Conceptual learning, stress-free exam preparation, and real understanding — not memorisation.",
