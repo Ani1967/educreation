@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
-  verification: {
-    google: "O44pzGtYeq-OLUIbMgUUUe7W-14msQl1oKnGGAvdgII",
-  },
   title: "EduCreation — Understand More. Stress Less. Create Always.",
   description:
     "EduCreation is a revolutionary learning system for students in India. Conceptual learning, stress-free exam preparation, and real understanding — not memorisation.",
@@ -26,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="O44pzGtYeq-OLUIbMgUUUe7W-14msQl1oKnGGAvdgII" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -38,7 +35,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script id="fb-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.' + 'facebook.net/en_US/fbevents.js');
+            fbq('init', '1438654674832607');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
