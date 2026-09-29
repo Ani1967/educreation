@@ -7,11 +7,36 @@ export default function Pricing() {
         <div className="section-header reveal">
           <p className="section-label">Simple pricing</p>
           <h2>Start for free.<br /><em>Pay only when it works.</em></h2>
-          <p>Every student gets one full concept session at no cost — no credit card, no countdown, no pressure. If the system works, you&apos;ll know it.</p>
+          <p>Every student gets a free 4-step PDF guide for their topic — no credit card. If the system works, you'll know it, then pick a plan.</p>
         </div>
         <div className="pricing-grid">
 
-          {/* Spark */}
+          {/* Free Guide - NEW */}
+          <div className="plan-card reveal" style={{ background: "var(--dark)", transitionDelay: "0.02s", border: "1px solid rgba(34,197,94,0.3)" }}>
+            <div className="plan-top" style={{ background: "var(--dark2)" }}>
+              <span className="plan-badge" style={{ background: "rgba(34,197,94,0.15)", color: "#22c55e", border: "0.5px solid rgba(34,197,94,0.3)" }}>FREE</span>
+              <p className="plan-name">Free Guide</p>
+              <p className="plan-tagline">Instant PDF · No payment</p>
+              <div className="plan-price">
+                <span className="plan-currency" style={{ color: "#22c55e" }}>₹</span>
+                <span className="plan-amount" style={{ color: "#22c55e" }}>0</span>
+              </div>
+              <p className="plan-period" style={{ color: "rgba(240,230,206,0.4)" }}>Instant PDF</p>
+              <p className="plan-annual">Personalised 4-step concept guide</p>
+            </div>
+            <div className="plan-body" style={{ background: "var(--dark)" }}>
+              <p className="plan-includes">What's included</p>
+              <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Enter child's class + topic + problem</p>
+              <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Easy steps parents can follow at home</p>
+              <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>No commitment - try first</p>
+              <p className="plan-feature dim">2 personalised sessions per week</p>
+              <p className="plan-feature dim">Weekly progress report</p>
+              <p className="plan-feature dim">Concept block tracker</p>
+              <a href="/get-pdf" className="plan-btn" style={{ background: "#22c55e", color: "#000", border: "1px solid #22c55e" }}>Get Free PDF</a>
+            </div>
+          </div>
+
+          {/* Spark - UPDATED to ₹1,999 */}
           <div className="plan-card reveal" style={{ background: "var(--dark)", transitionDelay: "0.05s" }}>
             <div className="plan-top" style={{ background: "var(--dark2)" }}>
               <span className="plan-badge" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "0.5px solid rgba(201,169,110,0.3)" }}>Starter</span>
@@ -19,24 +44,24 @@ export default function Pricing() {
               <p className="plan-tagline">2 subjects · Gap-focused entry</p>
               <div className="plan-price">
                 <span className="plan-currency" style={{ color: "var(--gold)" }}>₹</span>
-                <span className="plan-amount" style={{ color: "var(--gold)" }}>499</span>
+                <span className="plan-amount" style={{ color: "var(--gold)" }}>1,999</span>
               </div>
               <p className="plan-period" style={{ color: "rgba(240,230,206,0.4)" }}>per month</p>
-              <p className="plan-annual">₹4,999/year — save ₹989</p>
+              <p className="plan-annual">₹19,999/year — save ₹3,989</p>
             </div>
             <div className="plan-body" style={{ background: "var(--dark)" }}>
-              <p className="plan-includes">What&apos;s included</p>
+              <p className="plan-includes">What's included</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Concept maps for 2 subjects</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Daily study rhythm planner</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Weekly concept mastery check</p>
               <p className="plan-feature dim">Exam readiness tracker</p>
               <p className="plan-feature dim">Weekly parent report</p>
               <p className="plan-feature dim">Live doubt sessions</p>
-              <a href="/signup" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
+              <a href="/pricing" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started — ₹1,999/mo</a>
             </div>
           </div>
 
-          {/* Illuminate */}
+          {/* Illuminate - UPDATED to ₹2,999 */}
           <div className="plan-card featured reveal" style={{ background: "var(--dark)", transitionDelay: "0.1s" }}>
             <div className="plan-top" style={{ background: "var(--gold)" }}>
               <span className="plan-badge" style={{ background: "rgba(26,23,20,0.2)", color: "var(--dark)" }}>Most popular</span>
@@ -44,10 +69,10 @@ export default function Pricing() {
               <p className="plan-tagline" style={{ color: "rgba(26,23,20,0.6)" }}>The complete system</p>
               <div className="plan-price">
                 <span className="plan-currency" style={{ color: "var(--dark)" }}>₹</span>
-                <span className="plan-amount" style={{ color: "var(--dark)" }}>999</span>
+                <span className="plan-amount" style={{ color: "var(--dark)" }}>2,999</span>
               </div>
               <p className="plan-period" style={{ color: "rgba(26,23,20,0.5)" }}>per month</p>
-              <p className="plan-annual" style={{ color: "rgba(26,23,20,0.5)" }}>₹9,999/year — save ₹1,989</p>
+              <p className="plan-annual" style={{ color: "rgba(26,23,20,0.5)" }}>₹29,999/year — save ₹5,989</p>
             </div>
             <div className="plan-body" style={{ background: "var(--dark)" }}>
               <p className="plan-includes">Everything in Spark, plus</p>
@@ -57,11 +82,11 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>Weekly parent concept report</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>2 live doubt sessions per month</p>
               <p className="plan-feature dim">1-on-1 mentor sessions</p>
-              <a href="/signup" className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>Get started — most popular</a>
+              <a href="/pricing" className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>Get started — ₹2,999/mo</a>
             </div>
           </div>
 
-          {/* Mastery */}
+          {/* Mastery - UPDATED to ₹4,999 */}
           <div className="plan-card reveal" style={{ background: "var(--dark)", transitionDelay: "0.15s" }}>
             <div className="plan-top" style={{ background: "var(--dark2)" }}>
               <span className="plan-badge" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "0.5px solid rgba(201,169,110,0.3)" }}>Premium</span>
@@ -69,10 +94,10 @@ export default function Pricing() {
               <p className="plan-tagline">Serious exam preparation</p>
               <div className="plan-price">
                 <span className="plan-currency" style={{ color: "var(--gold)" }}>₹</span>
-                <span className="plan-amount" style={{ color: "var(--gold)" }}>1,999</span>
+                <span className="plan-amount" style={{ color: "var(--gold)" }}>4,999</span>
               </div>
               <p className="plan-period" style={{ color: "rgba(240,230,206,0.4)" }}>per month</p>
-              <p className="plan-annual">₹19,999/year — save ₹3,989</p>
+              <p className="plan-annual">₹49,999/year — save ₹9,989</p>
             </div>
             <div className="plan-body" style={{ background: "var(--dark)" }}>
               <p className="plan-includes">Everything in Illuminate, plus</p>
@@ -81,13 +106,13 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Board exam booster programme</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Priority weekly parent call</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Emergency concept rescue session</p>
-              <a href="/signup" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started</a>
+              <a href="/pricing" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>Get started — ₹4,999/mo</a>
             </div>
           </div>
 
         </div>
         <p style={{ textAlign: "center", marginTop: "2rem", fontSize: "0.85rem", color: "rgba(240,230,206,0.35)" }}>
-          No EMI traps · No long-term commitments · Cancel anytime · First session always free
+          No EMI traps · No long-term commitments · Cancel anytime · Free PDF requires no payment
         </p>
         <p style={{ textAlign: "center", marginTop: "0.5rem", fontSize: "0.85rem", color: "rgba(240,230,206,0.4)" }}>
           Schools &amp; institutions — <a href={WA_URL} target="_blank" rel="noreferrer" style={{ color: "var(--gold)", textDecoration: "none" }}>contact us</a> for partnership pricing starting at ₹950/student/year
