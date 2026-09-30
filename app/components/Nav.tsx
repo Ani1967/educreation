@@ -50,7 +50,7 @@ export default function Nav() {
         <a href="#students" onClick={() => setMobileOpen(false)}>Students</a>
         <a href="#pricing"  onClick={() => setMobileOpen(false)}>Pricing</a>
         <a href="#parents"  onClick={() => setMobileOpen(false)}>For Parents</a>
-        <a href="/signup" onClick={() => setMobileOpen(false)} style={{ color: "var(--gold)" }}>
+        <a href="/get-pdf" onClick={() => setMobileOpen(false)} style={{ color: "var(--gold)" }}>
           Book free session →
         </a>
       </div>
