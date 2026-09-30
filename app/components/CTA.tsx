@@ -8,7 +8,7 @@ export default function CTA() {
         <div className="cta-inner reveal">
           <p className="section-label" style={{ textAlign: "center", marginBottom: "0.75rem" }}>Start today</p>
           <h2>Get your free PDF guide.<br /><em>No commitment.</em></h2>
-          <p>Book a free 45-minute concept session for your child. See the system work in real time — before you pay anything.</p>
+          <p>Download our free 7-page guide on building understanding that stays for life. See the system before you pay anything.</p>
           <BookingForm />
           <p className="cta-note" style={{ marginTop: "1.25rem" }}>
             We will WhatsApp you within 2 hours · Kolkata-based families only in Phase 1
