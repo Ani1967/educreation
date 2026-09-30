@@ -29,7 +29,7 @@ export default function Hero() {
               </div>
               <div>
                 <div className="hero-stat-num">₹0</div>
-                <div className="hero-stat-label">First session free</div>
+                <div className="hero-stat-label">Free PDF guide</div>
               </div>
               <div>
                 <div className="hero-stat-num">NCERT</div>
