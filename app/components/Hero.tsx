@@ -14,7 +14,9 @@ export default function Hero() {
               EduCreation is a revolutionary learning system where students don&apos;t just prepare for exams — they own how they learn. Stress-free. Conceptual. Built for every child.
             </p>
             <div className="hero-actions">
-              <a href="/signup" className="btn-primary"[STRIPPED 68 bytes]"16" height="16" viewBox="0 0 16 16" fill="none">
+              <a href="/signup" className="btn-primary">
+                Book your free session
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
@@ -35,6 +37,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
+
           <div className="hero-visual">
             <div className="hero-card-stack">
               <div className="hcs-card hcs-1">
