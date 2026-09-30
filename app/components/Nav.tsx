@@ -51,7 +51,7 @@ export default function Nav() {
         <a href="#pricing"  onClick={() => setMobileOpen(false)}>Pricing</a>
         <a href="#parents"  onClick={() => setMobileOpen(false)}>For Parents</a>
         <a href="/get-pdf" onClick={() => setMobileOpen(false)} style={{ color: "var(--gold)" }}>
-          Book free session →
+           Get free PDF guide →
         </a>
       </div>
     </>
