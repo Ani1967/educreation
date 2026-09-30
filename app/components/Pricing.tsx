@@ -89,7 +89,7 @@ export default function Pricing() {
               <p className="plan-feature dim">Exam readiness tracker</p>
               <p className="plan-feature dim">Weekly parent report</p>
               <p className="plan-feature dim">Live doubt sessions</p>
-              <a href="/pricing" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>
+              <a href={`/pricing?billing=${billing}`} className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>
                 {billing === "monthly" ? "Get started — ₹1,999/mo" : "Get started — ₹19,999/yr"}
               </a>
             </div>
@@ -116,7 +116,7 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>Weekly parent concept report</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.85)" }}>2 live doubt sessions per month</p>
               <p className="plan-feature dim">1-on-1 mentor sessions</p>
-              <a href="/pricing" className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>
+              <a href={`/pricing?billing=${billing}`} className="plan-btn" style={{ background: "var(--gold)", color: "var(--dark)" }}>
                 {billing === "monthly" ? "Get started — ₹2,999/mo" : "Get started — ₹29,999/yr"}
               </a>
             </div>
@@ -142,7 +142,7 @@ export default function Pricing() {
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Board exam booster programme</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Priority weekly parent call</p>
               <p className="plan-feature" style={{ color: "rgba(240,230,206,0.75)" }}>Emergency concept rescue session</p>
-              <a href="/pricing" className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>
+              <a href={`/pricing?billing=${billing}`} className="plan-btn" style={{ background: "rgba(201,169,110,0.12)", color: "var(--gold)", border: "1px solid rgba(201,169,110,0.3)" }}>
                 {billing === "monthly" ? "Get started — ₹4,999/mo" : "Get started — ₹49,999/yr"}
               </a>
             </div>
