@@ -132,7 +132,7 @@ export default function BookingForm() {
         <textarea name="concern" rows={3} placeholder="e.g. She studies hard but forgets everything in exams..." style={{ ...inputStyle, resize: "vertical" }} />
       </div>
       <button type="submit" disabled={state === "loading"} style={{ width: "100%", padding: "14px", background: "var(--gold)", color: "var(--dark)", border: "none", borderRadius: "6px", fontFamily: "'DM Sans',sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", transition: "background 0.2s", opacity: state === "loading" ? 0.7 : 1 }}>
-        {state === "loading" ? "Sending..." : "BOOK MY FREE SESSION →"}
+        {state === "loading" ? "Sending..." : "GET YOUR FREE PDF GUIDE →"}
       </button>
       {state === "error" && (
         <div style={{ marginTop: "1rem", textAlign: "center", padding: "1rem", background: "rgba(163,45,45,0.12)", border: "0.5px solid rgba(163,45,45,0.3)", borderRadius: "8px" }}>
