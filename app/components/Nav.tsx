@@ -36,7 +36,7 @@ export default function Nav() {
               <li><a href="#students">Students</a></li>
               <li><a href="#pricing">Pricing</a></li>
               <li><a href="#parents">For Parents</a></li>
-              <li><a href="/signup" className="nav-cta">Book free session</a></li>
+              <li><a href="/get-pdf" className="nav-cta">Book free session</a></li>
             </ul>
             <button className="nav-hamburger" onClick={() => setMobileOpen(true)} aria-label="Menu">
               <span /><span /><span />
