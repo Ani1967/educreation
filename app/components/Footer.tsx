@@ -26,9 +26,9 @@ export default function Footer() {
           <div>
             <p className="footer-col-title">Plans</p>
             <ul className="footer-links">
-              <li><a href="#pricing">Spark — ₹499/mo</a></li>
-              <li><a href="#pricing">Illuminate — ₹999/mo</a></li>
-              <li><a href="#pricing">Mastery — ₹1,999/mo</a></li>
+              <li><a href="#pricing">Spark — ₹1,999/mo</a></li>
+<li><a href="#pricing">Illuminate — ₹2,999/mo</a></li>
+<li><a href="#pricing">Mastery — ₹4,999/mo</a></li>
               <li><a href={WA_URL} target="_blank" rel="noreferrer">Schools &amp; institutions</a></li>
             </ul>
           </div>
