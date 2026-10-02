@@ -36,9 +36,15 @@ export default function Page() {
           <div><b>Step 1: Real-Life Anchor</b><p className="mt-2">{data.anchor}</p></div>
           <div><b>Step 2: 3-Box Visual Map</b><p className="mt-2">{data.map}</p></div>
           <div><b>Step 3: Worked Example ⭐</b><p className="mt-2"><b>PROBLEM:</b> {data.ex?.problem}</p><p className="mt-2"><b>SOLUTION:</b> {data.ex?.solution}</p><p className="mt-2 text-red-600"><b>Mistake:</b> {data.ex?.mistake}</p></div>
-          <div><b>Step 4: Your Turn</b><p className="mt-2">{data.ex?.practice}</p><p className="mt-2 italic">{data.ex?.check}</p></div>
-        </div>
-      )}
+             <div><b>Step 4: Your Turn</b><p className="mt-2">{data.ex?.practice}</p><p className="mt-2 italic">{data.ex?.check}</p></div>
+      <button 
+        onClick={() => window.location.href = '/checkout?plan=1999'}
+        className="bg-blue-600 text-white w-full py-3 mt-8 rounded-lg font-bold"
+      >
+        Loved the free guide? Unlock 1-on-1 Teacher @ Rs 1999
+      </button>
+      </div>
+    )}
       {data?.error && <p className="text-red-500 mt-4">{data.error}</p>}
     </div>
   );
