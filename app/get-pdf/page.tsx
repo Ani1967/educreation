@@ -10,7 +10,7 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
 
   const generate = async () => {
-    if(!topic){ alert("Enter Topic"); return; }
+    if(!topic){ alert("Enter Topic e.g. integers, Avogadros law"); return; }
     setLoading(true);
     const res = await fetch("/api/generate-guide", {
       method: "POST",
@@ -28,13 +28,7 @@ export default function Page() {
     const win = window.open("", "", "width=900,height=900");
     if(!win) return;
     win.document.write(`<html><head><title>${topic} Guide - EduCreators.org</title>
-      <style>
-        body{font-family:serif;padding:24px;color:#000}
-        .brand{border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}
-        .step{border-left:4px solid #22c55e;padding-left:12px;margin:20px 0}
-        .boxes{display:flex;gap:10px} .box{background:#f9fafb;border:1px solid #ddd;border-radius:10px;padding:12px;flex:1;font-size:13px}
-        .footer{margin-top:30px;border-top:1px solid #ddd;padding-top:10px;font-size:10px;color:#666;text-align:center}
-      </style>
+      <style>body{font-family:serif;padding:24px;color:#000}.brand{border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px;display:flex;justify-content:space-between}.step{border-left:4px solid #22c55e;padding-left:12px;margin:20px 0}.boxes{display:flex;gap:10px}.box{background:#f9fafb;border:1px solid #ddd;border-radius:10px;padding:12px;flex:1;font-size:13px}.footer{margin-top:30px;border-top:1px solid #ddd;padding-top:10px;font-size:10px;color:#666;text-align:center}</style>
       </head><body>${el.innerHTML}</body></html>`);
     win.document.close();
     win.print();
@@ -44,18 +38,33 @@ export default function Page() {
 
   return (
     <div style={{ minHeight:"100vh", background:"#0a0a0a", padding:24, color:"white" }}>
-      {/* BACK TO HOME - NEW */}
       <a href="/" style={{ color:"#9ca3af", fontSize:14, textDecoration:"none", display:"inline-block", marginBottom:12 }}>← EduCreators Home</a>
-      
       <p style={{ color:"#9ca3af", fontSize:14, marginBottom:12 }}>Enter child's class + topic + problem → Get instant PDF. No payment.</p>
       <h1 style={{ fontSize:40, fontFamily:"serif", marginBottom:20 }}>EduCreators - 4 Step Guide Generator</h1>
 
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1.5fr", gap:12, marginBottom:24, maxWidth:1000 }}>
-        <div><label style={{ fontSize:12, color:"#9ca3af" }}>Class *</label><input value={classVal} onChange={e=>setClassVal(e.target.value)} placeholder="e.g. Class 8" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} /></div>
-        <div><label style={{ fontSize:12, color:"#9ca3af" }}>Subject *</label><input value={subject} onChange={e=>setSubject(e.target.value)} placeholder="e.g. Science" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} /></div>
-        <div><label style={{ fontSize:12, color:"#9ca3af" }}>Topic *</label><input value={topic} onChange={e=>setTopic(e.target.value)} placeholder="e.g. Avogadros law" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} /></div>
-        <div><label style={{ fontSize:12, color:"#9ca3af" }}>Block (be specific)</label><textarea value={problem} onChange={e=>setProblem(e.target.value)} placeholder="e.g. mixes mass & volume" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4, height:42 }} /></div>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1.5fr", gap:12, marginBottom:24, maxWidth:1100 }}>
+        <div>
+          <label style={{ fontSize:12, color:"#9ca3af" }}>Class *</label>
+          <input value={classVal} onChange={e=>setClassVal(e.target.value)} placeholder="e.g. Class 8, Class 11" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} />
+          <div style={{ fontSize:11, color:"#6b7280", marginTop:4 }}>Ex: Class 8, Class 10</div>
+        </div>
+        <div>
+          <label style={{ fontSize:12, color:"#9ca3af" }}>Subject *</label>
+          <input value={subject} onChange={e=>setSubject(e.target.value)} placeholder="e.g. math, Science" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} />
+          <div style={{ fontSize:11, color:"#6b7280", marginTop:4 }}>Ex: math, Science</div>
+        </div>
+        <div>
+          <label style={{ fontSize:12, color:"#9ca3af" }}>Topic *</label>
+          <input value={topic} onChange={e=>setTopic(e.target.value)} placeholder="e.g. integers, Avogadros law" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4 }} />
+          <div style={{ fontSize:11, color:"#6b7280", marginTop:4 }}>Be specific: e.g. integers</div>
+        </div>
+        <div>
+          <label style={{ fontSize:12, color:"#9ca3af" }}>Block / Problem (be specific)</label>
+          <textarea value={problem} onChange={e=>setProblem(e.target.value)} placeholder="e.g. cannot understand adding negatives, mixes mass & volume" style={{ width:"100%", padding:"10px 12px", borderRadius:8, color:"black", background:"white", marginTop:4, height:42 }} />
+          <div style={{ fontSize:11, color:"#fbbf24", marginTop:4 }}>Tip: Write exact confusion, not just topic</div>
+        </div>
       </div>
+
       <button onClick={generate} style={{ background:"white", color:"black", padding:"10px 20px", borderRadius:8, fontWeight:700, marginBottom:30 }}>{loading?"Generating...":"Generate Real Guide"}</button>
 
       {data && !data.error && (
@@ -73,7 +82,7 @@ export default function Page() {
               <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}><b style={{ fontSize:18 }}>Step 3: Worked Example ⭐</b><p style={{ marginTop:8 }}><b>PROBLEM:</b> {data.ex?.problem}</p><p style={{ marginTop:8 }}><b>SOLUTION:</b> {data.ex?.solution}</p><p style={{ marginTop:8, color:"#dc2626" }}><b>Mistake:</b> {data.ex?.mistake}</p></div>
               <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}><b style={{ fontSize:18 }}>Step 4: Your Turn</b><p style={{ marginTop:8 }}>{data.ex?.practice}</p><p style={{ marginTop:8, fontStyle:"italic", color:"#6b7280" }}>{data.ex?.check}</p></div>
             </div>
-            <div style={{ marginTop:30, borderTop:"1px solid #e5e7eb", paddingTop:10, fontSize:10, color:"#6b7280", textAlign:"center" }}>Free guide generated at <b>EduCreators.org</b> | Create your own at https://educreators.org/get-pdf | Mentor: educreators.org/checkout?plan=1999</div>
+            <div style={{ marginTop:30, borderTop:"1px solid #e5e7eb", paddingTop:10, fontSize:10, color:"#6b7280", textAlign:"center" }}>Free guide generated at <b>EduCreators.org</b> | Create your own at https://educreators.org/get-pdf</div>
           </div>
           <div style={{ marginTop:24, display:"flex", gap:16 }}>
             <button onClick={handleDownload} style={{ flex:1, background:"black", color:"white", padding:14, borderRadius:12, fontWeight:700 }}>Download as PDF</button>
