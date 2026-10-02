@@ -21,61 +21,61 @@ export default function Page() {
     setLoading(false);
   };
 
-  const mapBoxes = data?.map? data.map.split("→").map((s:string)=>s.trim()) : [];
+  const mapBoxes = data?.map ? data.map.split("→").map((s:string)=>s.trim()) : [];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] p-6 text-white">
-      <p className="text-sm text-gray-400 mb-4">Enter child's class + topic + problem → Get instant PDF. No payment.</p>
-      <h1 className="text-4xl font-serif mb-6">EduCreators - 4 Step Guide Generator</h1>
+    <div style={{ minHeight:"100vh", background:"#0a0a0a", padding:24, color:"white" }}>
+      <p style={{ color:"#9ca3af", fontSize:14, marginBottom:12 }}>Enter child's class + topic + problem → Get instant PDF. No payment.</p>
+      <h1 style={{ fontSize:42, fontFamily:"serif", marginBottom:20 }}>EduCreators - 4 Step Guide Generator</h1>
 
-      <div className="flex flex-wrap gap-2 mb-10">
-        <input value={classVal} onChange={e=>setClassVal(e.target.value)} className="px-3 py-2 rounded text-black bg-white" />
-        <input value={subject} onChange={e=>setSubject(e.target.value)} className="px-3 py-2 rounded text-black bg-white" />
-        <input value={topic} onChange={e=>setTopic(e.target.value)} placeholder="Topic e.g. Avogadros law" className="px-3 py-2 rounded text-black bg-white w-64" />
-        <textarea value={problem} onChange={e=>setProblem(e.target.value)} placeholder="Block e.g. cannot understand problems" className="px-3 py-2 rounded text-black bg-white w-64 h-" />
-        <button onClick={generate} className="bg-white text-black px-4 py-2 rounded font-bold border">{loading? "..." : "Generate Real Guide"}</button>
+      <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:30 }}>
+        <input value={classVal} onChange={e=>setClassVal(e.target.value)} style={{ padding:"8px 12px", borderRadius:6, color:"black", background:"white" }} />
+        <input value={subject} onChange={e=>setSubject(e.target.value)} style={{ padding:"8px 12px", borderRadius:6, color:"black", background:"white" }} />
+        <input value={topic} onChange={e=>setTopic(e.target.value)} placeholder="Topic e.g. Avogadros law" style={{ padding:"8px 12px", borderRadius:6, color:"black", background:"white", width:220 }} />
+        <textarea value={problem} onChange={e=>setProblem(e.target.value)} placeholder="Block e.g. cannot understand problems" style={{ padding:"8px 12px", borderRadius:6, color:"black", background:"white", width:260, height:38 }} />
+        <button onClick={generate} style={{ background:"white", color:"black", padding:"8px 16px", borderRadius:6, fontWeight:700 }}>{loading?"Generating...":"Generate Real Guide"}</button>
       </div>
 
-      {data &&!data.error && (
-        <div className="bg-white text-black rounded-2xl p-8 max-w-4xl">
-          <h2 className="text-2xl font-serif font-bold">{topic} - 4 Step Guide for {classVal}</h2>
-          <p className="text-gray-500 text-sm mt-1">Subject: {subject} | Topic: {topic}</p>
+      {data && !data.error && (
+        <div style={{ background:"white", color:"black", borderRadius:20, padding:32, maxWidth:850 }}>
+          <h2 style={{ fontSize:24, fontFamily:"serif", fontWeight:700 }}>{topic} - 4 Step Guide for {classVal}</h2>
+          <p style={{ color:"#6b7280", fontSize:14, marginTop:4 }}>Subject: {subject} | Topic: {topic}</p>
 
-          <div className="mt-8 space-y-8">
-            <div className="border-l-4 border-green-500 pl-4">
-              <b className="text-xl font-serif">Step 1: Real-Life Anchor</b>
-              <p className="mt-2 text-gray-800">{data.anchor}</p>
+          <div style={{ marginTop:28, display:"flex", flexDirection:"column", gap:28 }}>
+            <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}>
+              <b style={{ fontSize:20, fontFamily:"serif" }}>Step 1: Real-Life Anchor</b>
+              <p style={{ marginTop:8 }}>{data.anchor}</p>
             </div>
 
-            <div className="border-l-4 border-green-500 pl-4">
-              <b className="text-xl font-serif">Step 2: 3-Box Visual Map</b>
-              <div className="mt-4 flex flex-col md:flex-row gap-3">
+            <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}>
+              <b style={{ fontSize:20, fontFamily:"serif" }}>Step 2: 3-Box Visual Map</b>
+              <div style={{ marginTop:12, display:"flex", gap:12, flexWrap:"wrap" }}>
                 {mapBoxes.map((b:string,i:number)=>(
-                  <div key={i} className="flex flex-1 items-center gap-2">
-                    <div className="flex-1 bg-gray-50 border rounded-lg p-3 text-sm">{b.replace(/^\[|\]$/g,'')}</div>
-                    {i < mapBoxes.length - 1 && <span className="text-xl">→</span>}
+                  <div key={i} style={{ display:"flex", alignItems:"center", gap:8, flex:1 }}>
+                    <div style={{ flex:1, background:"#f9fafb", border:"1px solid #e5e7eb", borderRadius:10, padding:12, fontSize:14 }}>{b.replace(/^\[|\]$/g,'')}</div>
+                    {i < mapBoxes.length-1 && <span style={{ fontSize:20 }}>→</span>}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="border-l-4 border-green-500 pl-4">
-              <b className="text-xl font-serif">Step 3: Worked Example ⭐</b>
-              <p className="mt-2"><b>PROBLEM:</b> {data.ex?.problem}</p>
-              <p className="mt-2"><b>SOLUTION:</b> {data.ex?.solution}</p>
-              <p className="mt-2 text-red-600"><b>Mistake:</b> {data.ex?.mistake}</p>
+            <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}>
+              <b style={{ fontSize:20, fontFamily:"serif" }}>Step 3: Worked Example ⭐</b>
+              <p style={{ marginTop:8 }}><b>PROBLEM:</b> {data.ex?.problem}</p>
+              <p style={{ marginTop:8 }}><b>SOLUTION:</b> {data.ex?.solution}</p>
+              <p style={{ marginTop:8, color:"#dc2626" }}><b>Mistake:</b> {data.ex?.mistake}</p>
             </div>
 
-            <div className="border-l-4 border-green-500 pl-4">
-              <b className="text-xl font-serif">Step 4: Your Turn</b>
-              <p className="mt-2">{data.ex?.practice}</p>
-              <p className="mt-2 italic text-gray-600">{data.ex?.check}</p>
+            <div style={{ borderLeft:"4px solid #22c55e", paddingLeft:16 }}>
+              <b style={{ fontSize:20, fontFamily:"serif" }}>Step 4: Your Turn</b>
+              <p style={{ marginTop:8 }}>{data.ex?.practice}</p>
+              <p style={{ marginTop:8, fontStyle:"italic", color:"#6b7280" }}>{data.ex?.check}</p>
             </div>
           </div>
 
-          <div className="mt-8 flex gap-4">
-            <button className="flex-1 bg-black text-white py-3 rounded-xl font-bold">Download as PDF</button>
-            <button onClick={()=>window.location.href='/checkout?plan=1999'} className="flex-1 bg-[#1ed760] text-black py-3 rounded-xl font-bold">Get Mentor for ₹1,999</button>
+          <div style={{ marginTop:32, display:"flex", gap:16 }}>
+            <button style={{ flex:1, background:"black", color:"white", padding:14, borderRadius:12, fontWeight:700 }}>Download as PDF</button>
+            <button onClick={()=>window.location.href='/checkout?plan=1999'} style={{ flex:1, background:"#22c55e", color:"black", padding:14, borderRadius:12, fontWeight:700 }}>Get Mentor for ₹1,999</button>
           </div>
         </div>
       )}
