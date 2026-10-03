@@ -9,7 +9,7 @@ export default function Footer() {
             <p className="footer-brand">EduCreation</p>
             <p className="footer-desc">A learning system built for every student in India. Not just knowledge — understanding that stays for life. Conceptual. Stress-free. Personalised.</p>
             <p style={{ marginTop: "1rem", fontSize: "0.82rem", color: "rgba(240,230,206,0.5)" }}>
-              <a href="mailto:anirudhakar@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>anirudhakar@gmail.com</a><br />
+              <a href="mailto:support@educreators.org" style={{ color: "inherit", textDecoration: "underline" }}>support@educreators.org</a><br />
               <a href="tel:+918276926995" style={{ color: "inherit" }}>+91 8276926995</a><br />
               Kolkata, West Bengal, India
             </p>
