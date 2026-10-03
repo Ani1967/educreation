@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { bookings } from "@/lib/db/schema";
-import { sendBookingConfirmationEmail } from "@/lib/email";
+import { sendBookingConfirmationEmail, sendOwnerBookingAlert } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       concern,
     } = body;
 
-    if (!parent_name || !student_name || !whatsapp || !studentClass || !board) {
+    if (!parent_name ||!student_name ||!whatsapp ||!studentClass ||!board) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -27,8 +27,8 @@ export async function POST(req: NextRequest) {
     }
 
     const [booking] = await db
-      .insert(bookings)
-      .values({
+     .insert(bookings)
+     .values({
         parentName: parent_name,
         studentName: student_name,
         whatsapp,
@@ -40,9 +40,23 @@ export async function POST(req: NextRequest) {
         concern: concern || null,
         source: "website",
       })
-      .returning();
+     .returning();
 
-    // Send confirmation email if email was provided
+    // 1. Email YOU (owner) at support@educreators.org - ALWAYS
+    sendOwnerBookingAlert({
+      id: booking.id,
+      parentName: parent_name,
+      studentName: student_name,
+      whatsapp,
+      email: email || "No email",
+      studentClass,
+      board,
+      subject,
+      preferredTime: preferred_time,
+      concern,
+    }).catch((e) => console.error("Owner alert failed:", e));
+
+    // 2. Email customer if they gave email
     if (email) {
       sendBookingConfirmationEmail(email, {
         parentName: parent_name,
