@@ -220,13 +220,26 @@ export async function sendOwnerBookingAlert(data: any): Promise<{ id?: string; e
     const { data: result, error } = await getResend().emails.send({
       from: "EduCreators <support@educreators.org>",
       to: "support@educreators.org",
-      subject: `New Booking: ${data.studentName} - ${data.whatsapp}`,
+      subject: `🔥 NEW BOOKING: ${data.studentName} (${data.studentClass}) - ${data.whatsapp}`,
       html: `
-        <h2>New Booking: ${data.whatsapp}</h2>
-        <p><b>Parent:</b> ${data.parentName}</p>
-        <p><b>Student:</b> ${data.studentName} - Class ${data.studentClass}</p>
-        <p><b>WhatsApp:</b> ${data.whatsapp}</p>
-        <p><b>Email:</b> ${data.email}</p>
+        <div style="font-family:Arial,sans-serif;background:#0a0a0a;padding:20px;color:#fff;">
+          <div style="max-width:600px;margin:0 auto;background:#111;border:1px solid #222;border-radius:12px;padding:24px;">
+            <h2 style="color:#d4a843;margin:0 0 20px;">New Booking: ${data.whatsapp}</h2>
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:8px 0;color:#888;">ID</td><td style="padding:8px 0;color:#fff;font-weight:bold;">${data.id}</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Parent</td><td style="padding:8px 0;color:#fff;">${data.parentName}</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Student</td><td style="padding:8px 0;color:#fff;">${data.studentName} - Class ${data.studentClass} (${data.board})</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">WhatsApp</td><td style="padding:8px 0;"><a href="https://wa.me/${data.whatsapp}" style="color:#25D366;text-decoration:none;">${data.whatsapp}</a></td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Email</td><td style="padding:8px 0;color:#fff;">${data.email}</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Subject</td><td style="padding:8px 0;color:#fff;">${data.subject || "-"}</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Time</td><td style="padding:8px 0;color:#fff;">${data.preferredTime || "-"}</td></tr>
+              <tr><td style="padding:8px 0;color:#888;">Concern</td><td style="padding:8px 0;color:#fff;">${data.concern || "-"}</td></tr>
+            </table>
+            <div style="margin-top:24px;text-align:center;">
+              <a href="https://wa.me/${data.whatsapp}?text=Hi%20${data.parentName},%20thanks%20for%20booking%20for%20${data.studentName}" style="display:inline-block;background:#25D366;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">WhatsApp Now →</a>
+            </div>
+          </div>
+        </div>
       `,
     });
     if (error) return { error: error.message };
