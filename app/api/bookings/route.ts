@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Email YOU (owner) at support@educreators.org - ALWAYS
     sendOwnerBookingAlert({
-      id: booking.id,
+      id: String(booking.id),
       parentName: parent_name,
       studentName: student_name,
       whatsapp,
