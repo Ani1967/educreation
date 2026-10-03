@@ -215,13 +215,24 @@ export async function sendWeeklyReportEmail(
   if (error) return { error: error.message };
   return { id: result?.id };
 }
-export async function sendOwnerBookingAlert(data: any) {
+export async function sendOwnerBookingAlert(data: any): Promise<{ id?: string; error?: string }> {
   try {
-    await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: "EduCreators <support@educreators.org>",
       to: "support@educreators.org",
       subject: `New Booking: ${data.studentName} - ${data.whatsapp}`,
-      html: `<h2>New Booking: ${data.whatsapp}</h2><p>Parent: ${data.parentName}</p><p>Student: ${data.studentName}</p>`,
+      html: `
+        <h2>New Booking: ${data.whatsapp}</h2>
+        <p><b>Parent:</b> ${data.parentName}</p>
+        <p><b>Student:</b> ${data.studentName} - Class ${data.studentClass}</p>
+        <p><b>WhatsApp:</b> ${data.whatsapp}</p>
+        <p><b>Email:</b> ${data.email}</p>
+      `,
     });
-  } catch(e){ console.error(e); }
+    if (error) return { error: error.message };
+    return { id: result?.id };
+  } catch (e: any) {
+    console.error(e);
+    return { error: e.message || "Failed" };
+  }
 }
