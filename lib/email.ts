@@ -219,7 +219,7 @@ export async function sendOwnerBookingAlert(data: any): Promise<{ id?: string; e
   try {
     const { data: result, error } = await getResend().emails.send({
       from: "EduCreators <support@educreators.org>",
-      to: "support@educreators.org",
+      to: ["support@educreators.org", "anirudhakar@gmail.com"],
       subject: `🔥 NEW BOOKING: ${data.studentName} (${data.studentClass}) - ${data.whatsapp}`,
       html: `
         <div style="font-family:Arial,sans-serif;background:#0a0a0a;padding:20px;color:#fff;">
